@@ -9,6 +9,8 @@
   "author": "João Ferreira (joao.ea2020@gmail.com)",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
   }
 }
