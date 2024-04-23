@@ -2,9 +2,9 @@
   "name": "task_api",
   "version": "1.0.0",
   "description": "task api é uma api de estudo do livro 'Contruindo APIs REST com Node.js'",
-  "main": "index.js",
+  "main": "./src/server.js",
   "scripts": {
-    "dev": "node index.js"
+    "dev": "node ./src/server.js"
   },
   "author": "João Ferreira (joao.ea2020@gmail.com)",
   "license": "ISC",
