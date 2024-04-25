@@ -1,7 +1,15 @@
-const tasks = ["Shopping", "Repair the PC", "Walk on the street"];
+const TaskRepository = require("../repository/taskRepository");
+
+const taskRepository = new TaskRepository();
 
 class TaskController {
-  static listAll(req, res) {
+  static async createTable(req, res) {
+    await taskRepository.createTable();
+  }
+
+  static async listAll(req, res) {
+    const tasks = await taskRepository.listAll();
+
     return res.json(tasks);
   }
 }
