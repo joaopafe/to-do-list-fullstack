@@ -1,5 +1,7 @@
 const express = require("express");
-const taskRouter = require("./task/task.routes");
+const taskRouter = require("./task/taskRoutes");
+const { errors } = require("celebrate");
+const errorMiddleware = require("./error/errorMiddleware");
 
 const PORT = process.env.PORT || 3000;
 
@@ -10,3 +12,6 @@ app.get("/", (req, res) => res.json({ message: `Listening` }));
 app.listen(PORT, () => console.log(`Listening at port ${PORT}`));
 
 app.use("/task", taskRouter);
+
+app.use(errors());
+app.use(errorMiddleware);

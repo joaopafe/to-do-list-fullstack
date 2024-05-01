@@ -12,6 +12,12 @@ class TaskController {
 
     return res.json(tasks);
   }
+
+  static async listById(req, res) {
+    const task = await taskRepository.listById(req.params.id);
+
+    return res.json(task);
+  }
 }
 
 module.exports = TaskController;

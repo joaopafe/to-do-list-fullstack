@@ -15,6 +15,12 @@ class TaskRepository {
 
     return db.all(`SELECT * FROM Task`);
   }
+
+  async listById(id) {
+    const db = await openDB();
+
+    return db.all(`SELECT * FROM Task WHERE id = ?`, [id]);
+  }
 }
 
 module.exports = TaskRepository;
