@@ -1,5 +1,6 @@
 const express = require("express");
 const { celebrate, Joi, Segments } = require("celebrate");
+const verifyIfExistsBody = require("../middleware/verifyIfExistsBody");
 
 const TaskController = require("./TaskController");
 
@@ -17,6 +18,17 @@ taskRouter.get(
     }),
   }),
   TaskController.listById
+);
+
+taskRouter.post(
+  "/",
+  verifyIfExistsBody,
+  celebrate({
+    [Segments.BODY]: Joi.object().keys({
+      description: Joi.string().min(4).required(),
+    }),
+  }),
+  TaskController.create
 );
 
 module.exports = taskRouter;

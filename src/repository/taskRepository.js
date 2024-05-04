@@ -21,6 +21,12 @@ class TaskRepository {
 
     return db.all(`SELECT * FROM Task WHERE id = ?`, [id]);
   }
+
+  async create(task) {
+    const db = await openDB();
+
+    return db.all(`INSERT INTO Task (description) VALUES (?)`, [task]);
+  }
 }
 
 module.exports = TaskRepository;

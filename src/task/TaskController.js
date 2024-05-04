@@ -18,6 +18,14 @@ class TaskController {
 
     return res.json(task);
   }
+
+  static async create(req, res) {
+    const task = req.body.description;
+
+    await taskRepository.create(task);
+
+    return res.status(201).json({ message: "Task created successfully" });
+  }
 }
 
 module.exports = TaskController;
