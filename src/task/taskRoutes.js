@@ -48,4 +48,14 @@ taskRouter.put(
   TaskController.update
 );
 
+taskRouter.delete(
+  "/:id",
+  celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      id: Joi.number().positive().required(),
+    }),
+  }),
+  TaskController.delete
+);
+
 module.exports = taskRouter;

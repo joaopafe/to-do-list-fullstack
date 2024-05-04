@@ -1,5 +1,5 @@
 const TaskRepository = require("../repository/taskRepository");
-const verifyIfExistsBody = require("../services/verifyIfExistsId");
+const verifyIfExistsId = require("../services/verifyIfExistsId");
 
 const taskRepository = new TaskRepository();
 
@@ -32,7 +32,7 @@ class TaskController {
     const id = req.params.id;
     const description = req.body.description;
 
-    const existsId = await verifyIfExistsBody(id);
+    const existsId = await verifyIfExistsId(id);
 
     if (existsId == false)
       res.status(404).json({ message: "taskId not exists" });
@@ -43,6 +43,19 @@ class TaskController {
       id,
       description,
     });
+  }
+
+  static async delete(req, res) {
+    const id = req.params.id;
+
+    const existsId = await verifyIfExistsId(id);
+
+    if (existsId == false)
+      res.status(404).json({ message: "taskId not exists" });
+
+    await taskRepository.delete(id);
+
+    return res.status(200).json({ message: "Task deleted successfully" });
   }
 }
 

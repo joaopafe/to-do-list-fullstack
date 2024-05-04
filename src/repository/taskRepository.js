@@ -36,6 +36,12 @@ class TaskRepository {
       id,
     ]);
   }
+
+  async delete(id) {
+    const db = await openDB();
+
+    return db.all(`DELETE FROM Task WHERE id = ?`, [id]);
+  }
 }
 
 module.exports = TaskRepository;
