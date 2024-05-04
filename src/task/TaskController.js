@@ -1,4 +1,5 @@
 const TaskRepository = require("../repository/taskRepository");
+const verifyIfExistsBody = require("../services/verifyIfExistsId");
 
 const taskRepository = new TaskRepository();
 
@@ -25,6 +26,23 @@ class TaskController {
     await taskRepository.create(task);
 
     return res.status(201).json({ message: "Task created successfully" });
+  }
+
+  static async update(req, res) {
+    const id = req.params.id;
+    const description = req.body.description;
+
+    const existsId = await verifyIfExistsBody(id);
+
+    if (existsId == false)
+      res.status(404).json({ message: "taskId not exists" });
+
+    await taskRepository.update(id, description);
+
+    return res.json({
+      id,
+      description,
+    });
   }
 }
 

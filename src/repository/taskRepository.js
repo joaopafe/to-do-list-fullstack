@@ -27,6 +27,15 @@ class TaskRepository {
 
     return db.all(`INSERT INTO Task (description) VALUES (?)`, [task]);
   }
+
+  async update(id, description) {
+    const db = await openDB();
+
+    return db.all(`UPDATE Task SET description = ? WHERE id = ?`, [
+      description,
+      id,
+    ]);
+  }
 }
 
 module.exports = TaskRepository;

@@ -3,6 +3,7 @@ const { celebrate, Joi, Segments } = require("celebrate");
 const verifyIfExistsBody = require("../middleware/verifyIfExistsBody");
 
 const TaskController = require("./TaskController");
+const existsId = require("../services/verifyIfExistsId");
 
 const taskRouter = express.Router();
 
@@ -29,6 +30,22 @@ taskRouter.post(
     }),
   }),
   TaskController.create
+);
+
+taskRouter.put(
+  "/:id",
+  verifyIfExistsBody,
+  celebrate({
+    [Segments.BODY]: Joi.object().keys({
+      description: Joi.string().min(4).required(),
+    }),
+  }),
+  celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      id: Joi.number().positive().required(),
+    }),
+  }),
+  TaskController.update
 );
 
 module.exports = taskRouter;
