@@ -3,7 +3,6 @@ const { celebrate, Joi, Segments } = require("celebrate");
 const verifyIfExistsBody = require("../middleware/verifyIfExistsBody");
 
 const TaskController = require("./TaskController");
-const existsId = require("../services/verifyIfExistsId");
 
 const taskRouter = express.Router();
 
