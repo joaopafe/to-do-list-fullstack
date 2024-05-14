@@ -15,6 +15,21 @@ class UserController {
 
     res.status(201).json({ message: "User created successfully" });
   }
+
+  static async update(req, res) {
+    const username = req.body.username;
+    const password = req.body.password;
+    const newPassword = req.body.newPassword;
+
+    const rows = await userRepository.update(username, password, newPassword);
+
+    //Validation that the username and password are correct
+    if (rows.changes == 0)
+      res.status(401).json({ message: "Incorrect username and/or password" });
+
+    if (rows.changes == 1)
+      res.status(200).json({ message: "Password updated successfully" });
+  }
 }
 
 module.exports = UserController;

@@ -18,6 +18,17 @@ class UserRepository {
       password,
     ]);
   }
+
+  async update(username, password, newPassword) {
+    const db = await openDB();
+
+    const rows = await db.run(
+      `UPDATE User SET password = ? WHERE username = ? AND password = ?`,
+      [newPassword, username, password]
+    );
+
+    return rows;
+  }
 }
 
 module.exports = UserRepository;
