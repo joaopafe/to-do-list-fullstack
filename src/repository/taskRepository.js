@@ -6,14 +6,14 @@ class TaskRepository {
 
     db.exec(
       `CREATE TABLE IF NOT EXISTS Task 
-      (id INTEGER PRIMARY KEY AUTOINCREMENT, description TEXT)`
+      (id INTEGER PRIMARY KEY AUTOINCREMENT, description TEXT, user_id INTEGER)`
     );
   }
 
-  async listAll() {
+  async listAll(userId) {
     const db = await openDB();
 
-    return db.all(`SELECT * FROM Task`);
+    return db.all(`SELECT * FROM Task WHERE user_id = ?`, [userId]);
   }
 
   async listById(id) {
@@ -22,10 +22,13 @@ class TaskRepository {
     return db.all(`SELECT * FROM Task WHERE id = ?`, [id]);
   }
 
-  async create(task) {
+  async create(task, userId) {
     const db = await openDB();
 
-    return db.all(`INSERT INTO Task (description) VALUES (?)`, [task]);
+    return db.all(`INSERT INTO Task (description, user_id) VALUES (?, ?)`, [
+      task,
+      userId,
+    ]);
   }
 
   async update(id, description) {

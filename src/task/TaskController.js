@@ -1,5 +1,6 @@
 const TaskRepository = require("../repository/taskRepository");
 const verifyIfExistsId = require("../services/verifyIfExistsId");
+const jwt = require("jsonwebtoken");
 
 const taskRepository = new TaskRepository();
 
@@ -9,7 +10,9 @@ class TaskController {
   }
 
   static async listAll(req, res) {
-    const tasks = await taskRepository.listAll();
+    const userId = req.headers["x-access-token"];
+
+    const tasks = await taskRepository.listAll(userId);
 
     return res.json(tasks);
   }
@@ -22,8 +25,9 @@ class TaskController {
 
   static async create(req, res) {
     const task = req.body.description;
+    const userId = req.userId;
 
-    await taskRepository.create(task);
+    await taskRepository.create(task, userId);
 
     return res.status(201).json({ message: "Task created successfully" });
   }
