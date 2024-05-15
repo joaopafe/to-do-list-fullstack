@@ -29,6 +29,17 @@ class UserRepository {
 
     return rows;
   }
+
+  async login(username, password) {
+    const db = await openDB();
+
+    const rows = await db.all(
+      `SELECT * FROM User WHERE username = ? AND password = ?`,
+      [username, password]
+    );
+
+    return rows;
+  }
 }
 
 module.exports = UserRepository;

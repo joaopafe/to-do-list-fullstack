@@ -1,6 +1,7 @@
 const express = require("express");
 const { celebrate, Joi, Segments } = require("celebrate");
 const verifyIfExistsBody = require("../middleware/verifyIfExistsBody");
+const authentication = require("../middleware/authetication");
 
 const TaskController = require("./TaskController");
 

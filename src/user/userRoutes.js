@@ -35,4 +35,16 @@ userRouter.put(
   UserController.update
 );
 
+userRouter.post(
+  "/login",
+  verifyIfExistsBody,
+  celebrate({
+    [Segments.BODY]: Joi.object().keys({
+      username: Joi.string().min(4).required(),
+      password: Joi.string().min(4).required(),
+    }),
+  }),
+  UserController.login
+);
+
 module.exports = userRouter;
