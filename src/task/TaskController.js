@@ -1,7 +1,6 @@
 const TaskRepository = require("../repository/taskRepository");
 const verifyIfExistsId = require("../services/verifyIfExistsId");
 const jwt = require("jsonwebtoken");
-const authentication = require("../middleware/authetication");
 
 const privateKey = process.env.PRIVATE_KEY || "task_api";
 const taskRepository = new TaskRepository();
@@ -11,9 +10,7 @@ class TaskController {
     await taskRepository.createTable();
   }
 
-  static async listAll(req, res, next) {
-    authentication(req, res, next);
-
+  static async listAll(req, res) {
     const tasks = await taskRepository.listAll(req.userId);
 
     return res.json(tasks);
@@ -26,35 +23,14 @@ class TaskController {
   }
 
   static async create(req, res) {
-    if (!req.headers.authorization)
-      res.status(401).json({ message: "Unauthorized" });
-
-    const token = req.headers.authorization.replace("Bearer ", "");
-
-    jwt.verify(token, privateKey, (err, decode) => {
-      if (err) res.status(401).json({ message: "Unauthorized" });
-
-      req.userId = decode.userId;
-    });
-
     const task = req.body.description;
-    const userId = req.userId;
 
-    await taskRepository.create(task, userId);
+    await taskRepository.create(task, req.userId);
 
     return res.status(201).json({ message: "Task created successfully" });
   }
 
   static async update(req, res) {
-    if (!req.headers.authorization)
-      res.status(401).json({ message: "Unauthorized" });
-
-    const token = req.headers.authorization.replace("Bearer ", "");
-
-    jwt.verify(token, privateKey, (err) => {
-      if (err) res.status(401).json({ message: "Unauthorized" });
-    });
-
     const id = req.params.id;
     const description = req.body.description;
 
@@ -72,15 +48,6 @@ class TaskController {
   }
 
   static async delete(req, res) {
-    if (!req.headers.authorization)
-      res.status(401).json({ message: "Unauthorized" });
-
-    const token = req.headers.authorization.replace("Bearer ", "");
-
-    jwt.verify(token, privateKey, (err) => {
-      if (err) res.status(401).json({ message: "Unauthorized" });
-    });
-
     const id = req.params.id;
 
     const existsId = await verifyIfExistsId(id);

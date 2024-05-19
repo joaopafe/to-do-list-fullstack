@@ -3,17 +3,20 @@ const jwt = require("jsonwebtoken");
 const privateKey = process.env.PRIVATE_KEY || "task_api";
 
 const authentication = (req, res, next) => {
-  console.log("A porra do req:" + req);
+  let token = req.headers.authorization;
 
-  if (!req.headers.authorization)
-    res.status(401).json({ message: "Unauthorized" });
+  if (typeof token == "undefined") {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
 
-  const token = req.headers.authorization.replace("Bearer ", "");
+  token = token.replace("Bearer ", "");
 
   jwt.verify(token, privateKey, (err, decode) => {
-    if (err) res.status(401).json({ message: "Unauthorized" });
+    if (err) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
 
-    if (decode.userId) req.userId = decode.userId;
+    req.userId = decode.userId;
   });
 
   next();

@@ -9,7 +9,7 @@ const taskRouter = express.Router();
 
 TaskController.createTable();
 
-taskRouter.get("/", TaskController.listAll);
+taskRouter.get("/", authentication, TaskController.listAll);
 
 taskRouter.get(
   "/:id",
@@ -18,6 +18,7 @@ taskRouter.get(
       id: Joi.number().positive().required(),
     }),
   }),
+  authentication,
   TaskController.listById
 );
 
@@ -29,6 +30,7 @@ taskRouter.post(
       description: Joi.string().min(4).required(),
     }),
   }),
+  authentication,
   TaskController.create
 );
 
@@ -45,6 +47,7 @@ taskRouter.put(
       id: Joi.number().positive().required(),
     }),
   }),
+  authentication,
   TaskController.update
 );
 
@@ -55,6 +58,7 @@ taskRouter.delete(
       id: Joi.number().positive().required(),
     }),
   }),
+  authentication,
   TaskController.delete
 );
 
