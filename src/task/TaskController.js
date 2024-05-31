@@ -16,8 +16,8 @@ class TaskController {
     return res.json(tasks);
   }
 
-  static async listById(req, res) {
-    const task = await taskRepository.listById(req.params.id);
+  static async findById(req, res) {
+    const task = await taskRepository.findById(req.params.id);
 
     return res.json(task);
   }
@@ -34,10 +34,9 @@ class TaskController {
     const id = req.params.id;
     const description = req.body.description;
 
-    const existsId = await verifyIfExistsId(id);
+    const found = await taskRepository.findById(id);
 
-    if (existsId == false)
-      res.status(404).json({ message: "taskId not exists" });
+    if (!found) return res.status(404).json({ message: "taskId not exists" });
 
     await taskRepository.update(id, description);
 
@@ -50,10 +49,9 @@ class TaskController {
   static async delete(req, res) {
     const id = req.params.id;
 
-    const existsId = await verifyIfExistsId(id);
+    const found = await taskRepository.findById(id);
 
-    if (existsId == false)
-      res.status(404).json({ message: "taskId not exists" });
+    if (!found) return res.status(404).json({ message: "taskId not exists" });
 
     await taskRepository.delete(id);
 

@@ -16,10 +16,12 @@ class TaskRepository {
     return db.all(`SELECT * FROM Task WHERE user_id = ?`, [userId]);
   }
 
-  async listById(id) {
+  async findById(id) {
     const db = await openDB();
 
-    return db.all(`SELECT * FROM Task WHERE id = ?`, [id]);
+    const results = await db.all(`SELECT * FROM Task WHERE id = ?`, [id]);
+
+    return results.length ? results[0] : null;
   }
 
   async create(task, userId) {
