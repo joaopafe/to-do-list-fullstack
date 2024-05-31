@@ -1,8 +1,5 @@
 const TaskRepository = require("../repository/taskRepository");
-const verifyIfExistsId = require("../services/verifyIfExistsId");
-const jwt = require("jsonwebtoken");
 
-const privateKey = process.env.PRIVATE_KEY || "task_api";
 const taskRepository = new TaskRepository();
 
 class TaskController {

@@ -9,6 +9,7 @@
   "author": "João Ferreira (joao.ea2020@gmail.com)",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "celebrate": "^15.0.3",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",

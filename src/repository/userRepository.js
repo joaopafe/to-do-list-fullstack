@@ -6,39 +6,36 @@ class UserRepository {
 
     db.exec(
       `CREATE TABLE IF NOT EXISTS User 
-      (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)`
+      (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password_hash TEXT)`
     );
+  }
+
+  async findByUsername(username) {
+    const db = await openDB();
+
+    const results = await db.all(`SELECT * FROM User WHERE username = ?`, [
+      username,
+    ]);
+
+    return results.length ? results[0] : null;
   }
 
   async create(username, password) {
     const db = await openDB();
 
-    db.all(`INSERT INTO User (username, password) VALUES (?, ?)`, [
+    db.all(`INSERT INTO User (username, password_hash) VALUES (?, ?)`, [
       username,
       password,
     ]);
   }
 
-  async update(username, password, newPassword) {
+  async update(username, newPassword) {
     const db = await openDB();
 
-    const rows = await db.run(
-      `UPDATE User SET password = ? WHERE username = ? AND password = ?`,
-      [newPassword, username, password]
-    );
-
-    return rows;
-  }
-
-  async login(username, password) {
-    const db = await openDB();
-
-    const rows = await db.all(
-      `SELECT * FROM User WHERE username = ? AND password = ?`,
-      [username, password]
-    );
-
-    return rows;
+    return db.run(`UPDATE User SET password_hash = ? WHERE username = ?`, [
+      newPassword,
+      username,
+    ]);
   }
 }
 

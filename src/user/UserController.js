@@ -1,5 +1,7 @@
-const UserRepository = require("../repository/userRepository");
 const jwt = require("jsonwebtoken");
+
+const UserRepository = require("../repository/userRepository");
+const HashProvider = require("../providers/HashProvider");
 
 const privateKey = process.env.PRIVATE_KEY || "task_api";
 const userRepository = new UserRepository();
@@ -11,7 +13,7 @@ class UserController {
 
   static async create(req, res) {
     const username = req.body.username;
-    const password = req.body.password;
+    const password = await HashProvider.hash(req.body.password);
 
     await userRepository.create(username, password);
 
@@ -21,39 +23,39 @@ class UserController {
   static async update(req, res) {
     const username = req.body.username;
     const password = req.body.password;
-    const newPassword = req.body.newPassword;
 
-    const rows = await userRepository.update(username, password, newPassword);
+    const user = await userRepository.findByUsername(username);
 
-    //Validation that the username and password are correct
-    if (rows.changes == 0)
-      return res
-        .status(401)
-        .json({ message: "Incorrect username and/or password" });
+    if (!user) return res.status(404).json({ message: "User not found" });
 
-    if (rows.changes == 1)
-      return res.status(200).json({ message: "Password updated successfully" });
+    const match = await HashProvider.compare(password, user.password_hash);
+
+    if (!match) return res.status(401).json({ message: "Invalid password" });
+
+    const newPassword = await HashProvider.hash(req.body.newPassword);
+
+    await userRepository.update(username, newPassword);
+
+    return res.status(200).json({ message: "Password updated successfully" });
   }
 
   static async login(req, res) {
     const username = req.body.username;
     const password = req.body.password;
 
-    const rows = await userRepository.login(username, password);
+    const user = await userRepository.findByUsername(username);
 
-    //Validation that username and password are correct
-    if (rows.length == 0)
-      return res
-        .status(401)
-        .json({ message: "Incorrect username and/or password" });
+    if (!user) return res.status(404).json({ message: "User not found" });
 
-    if (rows.length == 1) {
-      const token = jwt.sign({ userId: rows[0].id }, privateKey, {
-        expiresIn: 10_080,
-      });
+    const match = await HashProvider.compare(password, user.password_hash);
 
-      return res.json({ auth: true, token });
-    }
+    if (!match) return res.status(401).json({ message: "Invalid password" });
+
+    const token = jwt.sign({ userId: user.id }, privateKey, {
+      expiresIn: 10_080,
+    });
+
+    return res.json({ auth: true, token });
   }
 }
 

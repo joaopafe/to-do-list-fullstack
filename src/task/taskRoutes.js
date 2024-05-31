@@ -19,7 +19,7 @@ taskRouter.get(
     }),
   }),
   authentication,
-  TaskController.listById
+  TaskController.findById
 );
 
 taskRouter.post(
