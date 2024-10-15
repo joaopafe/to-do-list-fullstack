@@ -1,10 +1,10 @@
 {
-  "name": "task_api",
+  "name": "to-do-list",
   "version": "1.0.0",
-  "description": "task api é uma api de estudo do livro 'Contruindo APIs REST com Node.js'",
-  "main": "./src/server.js",
+  "description": "To do list is a project that aims to apply knowledge acquired in front end and backend",
+  "main": "./backend/server.js",
   "scripts": {
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./backend/server.js"
   },
   "author": "João Ferreira (joao.ea2020@gmail.com)",
   "license": "ISC",
