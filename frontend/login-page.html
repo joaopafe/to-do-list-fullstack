@@ -3,41 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./login-page.css" />
+
     <title>Login</title>
   </head>
 
   <body>
     <div class="welcome-section">
       <div id="welcome-text">
-        Realize login para acessar a melhor plataforma de lista de tarefas
+        Realize login para <br />
+        acessar a melhor plataforma de lista <br />
+        de tarefas
       </div>
 
       <div id="task-1">
-        <div id="check-task-image">
+        <div class="check-task-image">
           <img src="./images/check-task.png" alt="Botão de check" />
         </div>
         <div id="task-text">Levar o lixo pra fora</div>
-        <div id="remove-task-image">
+        <div class="remove-task-image">
           <img src="./images//delete-task.png" alt="Botão de remoção" />
         </div>
       </div>
 
       <div id="task-2">
-        <div id="check-task-image">
+        <div class="check-task-image">
           <img src="./images/check-task.png" alt="Botão de check" />
         </div>
         <div id="task-text">Praticar exercício físico</div>
-        <div id="remove-task-image">
+        <div class="remove-task-image">
           <img src="./images/delete-task.png" alt="Botão de remoção" />
         </div>
       </div>
 
       <div id="task-3">
-        <div id="check-task-image">
+        <div class="check-task-image">
           <img src="./images/check-task.png" alt="Botão de check" />
         </div>
         <div id="task-text">Buscar o filho na escola</div>
-        <div id="remove-task-image">
+        <div class="remove-task-image">
           <img src="./images/delete-task.png" alt="Botão de remoção" />
         </div>
       </div>
@@ -47,17 +53,17 @@
       </div>
     </div>
 
-    <div class="login-form">
+    <div class="login-section">
       <div id="inputs-section">
         <form>
           <div id="username">
             <label for="username">Usuário</label>
-            <input type="text" />
+            <input id="input-username" type="text" />
           </div>
 
           <div id="password">
             <label for="password">Senha</label>
-            <input type="password" />
+            <input id="input-password" type="password" />
           </div>
         </form>
       </div>
