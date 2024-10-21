@@ -158,6 +158,11 @@ form {
   justify-content: flex-end;
 }
 
+#recovery-password-section:hover {
+  color: rgb(210, 210, 210);
+  cursor: pointer;
+}
+
 #submit-section {
   display: flex;
   flex-direction: column;
@@ -177,4 +182,9 @@ form {
   font-size: 100%;
   font-weight: bold;
   color: white;
+}
+
+#submit-login-button:hover {
+  background-color: #2f3c65;
+  cursor: pointer;
 }
