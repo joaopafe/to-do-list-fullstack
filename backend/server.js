@@ -1,12 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const taskRouter = require("./task/taskRoutes");
-const userRouter = require("./user/userRoutes");
 const { errors } = require("celebrate");
+const userRouter = require("./user/userRoutes");
 const errorMiddleware = require("./error/errorMiddleware");
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => res.json({ message: `Listening` }));
