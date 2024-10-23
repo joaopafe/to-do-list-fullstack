@@ -1,5 +1,3 @@
-const loginTeste = new Login();
-
 function redirectToRegister() {
   window.location.href = "../registerPage/register-page.html";
 }
@@ -10,7 +8,7 @@ async function executeSign() {
 
   await executeLoading();
 
-  const response = await loginTeste.signIn(username, password);
+  const response = await Login.signIn(username, password);
   const responseBody = await response.json();
 
   if (response.status === 500) {
