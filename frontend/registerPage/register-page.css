@@ -1,0 +1,239 @@
+body {
+  display: flex;
+  height: 100vh;
+  font-family: sans-serif;
+  color: white;
+}
+
+.welcome-section {
+  width: 50%;
+  background-color: #1d2334;
+}
+
+#welcome-text {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  padding-left: 10%;
+  font-size: 300%;
+  font-weight: bold;
+}
+
+#task-1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 15%;
+}
+
+#task-2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 15%;
+}
+
+#task-3 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 15%;
+}
+.check-task-image img {
+  max-width: 70%;
+  max-height: 70%;
+  width: auto;
+  height: auto;
+}
+
+#task-text {
+  color: black;
+  background-color: white;
+  height: 70%;
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10px;
+  align-items: center;
+  font-size: 180%;
+  font-weight: bold;
+  border-radius: 15px;
+}
+
+.remove-task-image img {
+  max-width: 70%;
+  max-height: 70%;
+  width: auto;
+  height: auto;
+}
+
+#create-task img {
+  max-width: 11%;
+  max-height: 11%;
+  width: auto;
+  height: auto;
+  margin-right: 5.75%;
+}
+
+#create-task {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.register-section {
+  width: 50%;
+  background-color: #212b47;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#inputs-section {
+  width: 99%;
+  height: 60%;
+  margin-bottom: 3%;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#username {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 33.3%;
+  font-size: 300%;
+  font-weight: bold;
+  margin-left: 0.8%;
+  /* margin-bottom: 3%; */
+}
+
+#input-username {
+  border: none;
+  background-color: #384b82;
+  color: white;
+  width: 100%;
+  height: 55%;
+  border-radius: 20px;
+  font-size: 80%;
+  font-weight: bold;
+  padding-left: 3%;
+}
+
+#password {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 33.3%;
+  font-size: 300%;
+  font-weight: bold;
+  margin-left: 0.8%;
+  /* margin-bottom: 3%; */
+}
+
+#input-password {
+  border: none;
+  background-color: #384b82;
+  color: white;
+  width: 100%;
+  height: 55%;
+  border-radius: 20px;
+  font-size: 80%;
+  font-weight: bold;
+  padding-left: 3%;
+}
+
+#confirm-password {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 33.3%;
+  font-size: 300%;
+  font-weight: bold;
+  margin-left: 0.8%;
+}
+
+#input-confirm-password {
+  border: none;
+  background-color: #384b82;
+  color: white;
+  width: 100%;
+  height: 55%;
+  border-radius: 20px;
+  font-size: 80%;
+  font-weight: bold;
+  padding-left: 3%;
+}
+
+#login-link-section {
+  width: 80%;
+  height: 5%;
+  font-size: 150%;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#login-link-section:hover {
+  color: rgb(210, 210, 210);
+  cursor: pointer;
+}
+
+#submit-section {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 22%;
+  font-size: 300%;
+  font-weight: bold;
+  margin-left: 1.5%;
+}
+
+#submit-register-button {
+  border: none;
+  background-color: #384b82;
+  width: 100%;
+  height: 55%;
+  border-radius: 20px;
+  font-size: 100%;
+  font-weight: bold;
+  color: white;
+}
+
+#submit-register-button:hover {
+  background-color: #2f3c65;
+  cursor: pointer;
+}
+
+#loading-icon {
+  height: 100px;
+  width: 100px;
+  background-color: transparent;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  border-radius: 50%;
+  border: 20px solid white;
+  border-top: 20px solid transparent;
+  animation: loading 1s linear infinite;
+  display: none;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
