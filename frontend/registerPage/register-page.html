@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../reset.css" />
     <link rel="stylesheet" href="./register-page.css" />
 
-    <title>Login</title>
+    <title>Cadastro</title>
   </head>
 
   <body>
@@ -74,10 +74,12 @@
         </form>
       </div>
 
-      <div id="login-link-section">Possui cadastro?</div>
+      <div id="login-link-section" onclick="redirectToLogin()">
+        Possui cadastro?
+      </div>
 
       <div id="submit-section">
-        <button id="submit-register-button" onclick="executeSign()">
+        <button id="submit-register-button" onclick="executeSignUp()">
           Continuar
         </button>
       </div>
@@ -85,4 +87,8 @@
 
     <span id="loading-icon"></span>
   </body>
+
+  <script src="../client/User.js"></script>
+  <script src="../utils/executeLoading.js"></script>
+  <script src="./registerPage.js"></script>
 </html>
