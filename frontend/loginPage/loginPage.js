@@ -1,5 +1,9 @@
 const loginTeste = new Login();
 
+function redirectToRegister() {
+  window.location.href = "../registerPage/register-page.html";
+}
+
 async function executeLoading() {
   document.getElementById("loading-icon").style.display = "block";
 

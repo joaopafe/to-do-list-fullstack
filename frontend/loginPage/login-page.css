@@ -149,7 +149,7 @@ form {
   padding-left: 3%;
 }
 
-#recovery-password-section {
+#register-user-section {
   width: 80%;
   height: 5%;
   font-size: 150%;
@@ -158,7 +158,7 @@ form {
   justify-content: flex-end;
 }
 
-#recovery-password-section:hover {
+#register-user-section:hover {
   color: rgb(210, 210, 210);
   cursor: pointer;
 }
