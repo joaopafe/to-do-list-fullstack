@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="../reset.css" />
     <link rel="stylesheet" href="./login-page.css" />
 
     <title>Login</title>
@@ -20,36 +20,36 @@
 
       <div id="task-1">
         <div class="check-task-image">
-          <img src="./images/check-task.png" alt="Botão de check" />
+          <img src="../images/check-task.png" alt="Botão de check" />
         </div>
         <div id="task-text">Levar o lixo pra fora</div>
         <div class="remove-task-image">
-          <img src="./images//delete-task.png" alt="Botão de remoção" />
+          <img src="../images//delete-task.png" alt="Botão de remoção" />
         </div>
       </div>
 
       <div id="task-2">
         <div class="check-task-image">
-          <img src="./images/check-task.png" alt="Botão de check" />
+          <img src="../images/check-task.png" alt="Botão de check" />
         </div>
         <div id="task-text">Praticar exercício físico</div>
         <div class="remove-task-image">
-          <img src="./images/delete-task.png" alt="Botão de remoção" />
+          <img src="../images/delete-task.png" alt="Botão de remoção" />
         </div>
       </div>
 
       <div id="task-3">
         <div class="check-task-image">
-          <img src="./images/check-task.png" alt="Botão de check" />
+          <img src="../images/check-task.png" alt="Botão de check" />
         </div>
         <div id="task-text">Buscar o filho na escola</div>
         <div class="remove-task-image">
-          <img src="./images/delete-task.png" alt="Botão de remoção" />
+          <img src="../images/delete-task.png" alt="Botão de remoção" />
         </div>
       </div>
 
       <div id="create-task">
-        <img src="./images/add-task.png" alt="Botão de adição" />
+        <img src="../images/add-task.png" alt="Botão de adição" />
       </div>
     </div>
 
@@ -71,8 +71,15 @@
       <div id="recovery-password-section">Não possui cadastro?</div>
 
       <div id="submit-section">
-        <button id="submit-login-button">Continuar</button>
+        <button id="submit-login-button" onclick="executeSign()">
+          Continuar
+        </button>
       </div>
     </div>
+
+    <span id="loading-icon"></span>
   </body>
+
+  <script src="../client/User.js"></script>
+  <script src="./loginPage.js"></script>
 </html>

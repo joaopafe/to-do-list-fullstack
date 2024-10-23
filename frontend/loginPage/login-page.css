@@ -188,3 +188,27 @@ form {
   background-color: #2f3c65;
   cursor: pointer;
 }
+
+#loading-icon {
+  height: 100px;
+  width: 100px;
+  background-color: transparent;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  border-radius: 50%;
+  border: 20px solid white;
+  border-top: 20px solid transparent;
+  animation: loading 1s linear infinite;
+  display: none;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
