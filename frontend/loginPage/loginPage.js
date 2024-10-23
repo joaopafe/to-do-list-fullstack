@@ -4,14 +4,6 @@ function redirectToRegister() {
   window.location.href = "../registerPage/register-page.html";
 }
 
-async function executeLoading() {
-  document.getElementById("loading-icon").style.display = "block";
-
-  setTimeout(function () {
-    document.getElementById("loading-icon").style.display = "none";
-  }, 2_000);
-}
-
 async function executeSign() {
   const username = document.getElementById("input-username").value;
   const password = document.getElementById("input-password").value;
