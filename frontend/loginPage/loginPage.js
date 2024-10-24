@@ -25,6 +25,7 @@ async function executeSign() {
 
   if (response.status === 200) {
     localStorage.setItem("token", responseBody.token);
+    localStorage.setItem("username", username);
     window.alert("Login realizado com sucesso");
   }
 }
