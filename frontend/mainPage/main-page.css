@@ -1,0 +1,224 @@
+body {
+  background-color: #212b47;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+header {
+  background-color: #1d2334;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 6vh;
+  height: 10vh;
+  margin-bottom: 1%;
+}
+
+#update-password-access {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 25%;
+  margin-left: 2%;
+}
+
+#update-password-access:hover {
+  cursor: pointer;
+  color: rgb(230, 230, 230);
+}
+
+#logout-section {
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  width: 20%;
+  margin-right: 2%;
+}
+
+#logout-section:hover {
+  cursor: pointer;
+  color: rgb(230, 230, 230);
+}
+
+#logout-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#logout-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logout-icon img {
+  max-height: 80%;
+  max-width: 80%;
+  height: auto;
+  width: auto;
+}
+
+#welcome-section {
+  font-size: 5vh;
+  margin-left: 2%;
+}
+
+#top-section {
+  display: flex;
+  justify-content: space-between;
+  height: 10vh;
+  margin-top: 1%;
+}
+
+#search-task {
+  height: 100%;
+  width: 60%;
+  margin-left: 2%;
+  display: flex;
+  align-items: center;
+}
+
+#search-input {
+  border: none;
+  border-radius: 10px;
+  height: 80%;
+  width: 90%;
+  background-color: #384b82;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+#create-task {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#create-task-text {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  font-size: 175%;
+  margin-right: 1%;
+}
+
+#create-task-button {
+  margin-right: 5%;
+}
+
+#create-task-button img {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+#create-task-button:hover {
+  cursor: pointer;
+}
+
+#to-do-list {
+  margin-top: 1%;
+}
+
+.task {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.check-icon {
+  width: 10%;
+}
+
+.check-icon img {
+  max-height: 60%;
+  max-width: 60%;
+  height: auto;
+  width: auto;
+}
+
+.check-icon:hover {
+  cursor: pointer;
+}
+
+.task-name {
+  width: 68%;
+  height: 13vh;
+  background-color: #384b82;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding-left: 1%;
+  font-size: 250%;
+}
+
+.edit-and-delete-task {
+  width: 15%;
+}
+
+.edit-task {
+  display: flex;
+}
+
+.edit-task img {
+  max-height: 88%;
+  max-width: 88%;
+  height: auto;
+  width: auto;
+}
+
+.edit-text {
+  font-size: 180%;
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.edit-icon {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-icon:hover {
+  cursor: pointer;
+}
+
+.delete-task {
+  display: flex;
+}
+
+.delete-task img {
+  max-height: 88%;
+  max-width: 88%;
+  height: auto;
+  width: auto;
+}
+
+.delete-text {
+  font-size: 180%;
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.delete-icon {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-icon:hover {
+  cursor: pointer;
+}

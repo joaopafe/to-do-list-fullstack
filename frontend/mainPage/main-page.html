@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="./main-page.css" />
 
     <title>Lista de tarefas</title>
   </head>
@@ -23,7 +24,7 @@
 
     <div id="welcome-section">
       Olá fulano! <br />
-      Aqui se encontram suas atividades
+      Aqui se encontram suas atividades.
     </div>
 
     <div id="top-section">
@@ -32,34 +33,34 @@
       </div>
 
       <div id="create-task">
+        <div id="create-task-text">Nova atividade</div>
+
         <div id="create-task-button">
           <img src="../images/add-task.png" alt="Cadastrar atividade" />
         </div>
       </div>
     </div>
 
-    <div id="to-do-list-section">
-      <div id="to-do-list">
-        <div id="task">
-          <div id="check-icon">
-            <img src="../images/check-task.png" alt="Status de checagem" />
+    <div id="to-do-list">
+      <div class="task">
+        <div class="check-icon">
+          <img src="../images/check-task.png" alt="Status de checagem" />
+        </div>
+
+        <div class="task-name">Estudar para a prova</div>
+
+        <div class="edit-and-delete-task">
+          <div class="edit-task">
+            <div class="edit-text">Editar</div>
+            <div class="edit-icon">
+              <img src="../images/edit-task.png" alt="Editar atividade" />
+            </div>
           </div>
 
-          <div id="task-name">Estudar para a prova</div>
-
-          <div id="edit-and-delete-task">
-            <div id="edit-task">
-              <div id="edit-text">Editar</div>
-              <div id="edit-icon">
-                <img src="../images/edit-task.png" alt="Editar atividade" />
-              </div>
-            </div>
-
-            <div id="delete-task">
-              <div id="delete-text">Excluir</div>
-              <div id="delete-icon">
-                <img src="../images/delete-task.png" alt="Excluir atividade" />
-              </div>
+          <div class="delete-task">
+            <div class="delete-text">Excluir</div>
+            <div class="delete-icon">
+              <img src="../images/delete-task.png" alt="Excluir atividade" />
             </div>
           </div>
         </div>
