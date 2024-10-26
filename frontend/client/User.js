@@ -9,7 +9,6 @@ class Login {
       method: "POST",
       body,
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
@@ -25,7 +24,6 @@ class Login {
       method: "POST",
       body,
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
