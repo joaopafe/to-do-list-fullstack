@@ -64,6 +64,13 @@ function listTasks(taskList) {
   });
 }
 
+function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("username");
+
+  window.location.href = "../loginPage/login-page.html";
+}
+
 document.getElementById("welcome-section").innerHTML = `
 Olá ${username}! <br />
 Aqui se encontram suas atividades.
