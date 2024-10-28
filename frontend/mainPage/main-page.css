@@ -281,3 +281,13 @@ header {
   font-weight: bold;
   font-size: 30px;
 }
+
+#confirm-task-creation:hover {
+  cursor: pointer;
+  background-color: #1d4ca9;
+}
+
+#cancel-task-creation:hover {
+  cursor: pointer;
+  background-color: #be2525;
+}
