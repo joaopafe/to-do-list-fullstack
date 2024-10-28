@@ -77,6 +77,11 @@ function openModal() {
   createTaskModal.showModal();
 }
 
+function closeModal() {
+  createTaskModal.style.display = "none";
+  createTaskModal.close();
+}
+
 document.getElementById("welcome-section").innerHTML = `
 Olá ${username}! <br />
 Aqui se encontram suas atividades.
