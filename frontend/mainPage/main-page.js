@@ -1,5 +1,6 @@
 const username = localStorage.getItem("username");
 const token = localStorage.getItem("token");
+const createTaskModal = document.getElementById("create-task-modal");
 let response = {};
 let responseBody = {};
 
@@ -71,11 +72,16 @@ function logout() {
   window.location.href = "../loginPage/login-page.html";
 }
 
+function openModal() {
+  createTaskModal.style.display = "flex";
+  createTaskModal.showModal();
+}
+
 document.getElementById("welcome-section").innerHTML = `
 Olá ${username}! <br />
 Aqui se encontram suas atividades.
 `;
 
-document.getElementById("create-task-modal").style.display = "none";
+createTaskModal.style.display = "none";
 
 getTasks(token);
