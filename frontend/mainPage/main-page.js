@@ -76,4 +76,6 @@ Olá ${username}! <br />
 Aqui se encontram suas atividades.
 `;
 
+document.getElementById("create-task-modal").style.display = "none";
+
 getTasks(token);
