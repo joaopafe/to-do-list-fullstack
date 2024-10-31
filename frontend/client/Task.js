@@ -7,4 +7,15 @@ class Task {
       },
     });
   }
+
+  static async postTask(token, description) {
+    return fetch("http://localhost:3000/task", {
+      method: "POST",
+      body: JSON.stringify({ description }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+  }
 }
