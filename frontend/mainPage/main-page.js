@@ -36,29 +36,30 @@ function listTasks(taskList) {
   taskList.forEach((task) => {
     const taskDiv = document.createElement("div");
     taskDiv.className = "task";
+    taskDiv.id = `task-${task.id}`;
 
     taskDiv.innerHTML = `
-    <div class="check-icon">
-          <img src="../images/check-task.png" alt="Status de checagem" />
-        </div>
+      <div class="check-icon">
+        <img src="../images/check-task.png" alt="Status de checagem" />
+      </div>
 
-        <div class="task-name">${task.description}</div>
+      <div class="task-name">${task.description}</div>
 
-        <div class="edit-and-delete-task">
-          <div class="edit-task">
-            <div class="edit-text">Editar</div>
-            <div class="edit-icon">
-              <img src="../images/edit-task.png" alt="Editar atividade" />
-            </div>
-          </div>
-
-          <div class="delete-task">
-            <div class="delete-text">Excluir</div>
-            <div class="delete-icon">
-              <img src="../images/delete-task.png" alt="Excluir atividade" />
-            </div>
+      <div class="edit-and-delete-task">
+        <div class="edit-task">
+          <div class="edit-text">Editar</div>
+          <div class="edit-icon">
+            <img src="../images/edit-task.png" alt="Editar atividade" />
           </div>
         </div>
+
+        <div class="delete-task">
+          <div class="delete-text">Excluir</div>
+          <div class="delete-icon">
+            <img src="../images/delete-task.png" alt="Excluir atividade" />
+          </div>
+        </div>
+      </div>
     `;
 
     document.getElementById("to-do-list").appendChild(taskDiv);
