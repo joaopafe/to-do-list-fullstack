@@ -82,6 +82,36 @@ function closeModal() {
   createTaskModal.close();
 }
 
+async function createTask() {
+  const description = document.getElementById("task-description").value;
+
+  response = await Task.postTask(token, description);
+  responseBody = await response.json();
+
+  if (response.status === 500) {
+    window.alert("Servidor fora de ar. Tente novamente mais tarde");
+  }
+
+  if (response.status === 400 || response.status === 404) {
+    window.alert(
+      "Não foi possível listar suas atividades. Tente novamente mais tarde"
+    );
+  }
+
+  if (response.status === 401) {
+    window.alert(
+      "Sua autenticação foi expirada. Logue novamente para utilizar a plataforma"
+    );
+
+    window.location.href = "../loginPage/login-page.html";
+  }
+
+  if (response.status === 201) {
+    closeModal();
+    getTasks(token);
+  }
+}
+
 document.getElementById("welcome-section").innerHTML = `
 Olá ${username}! <br />
 Aqui se encontram suas atividades.
