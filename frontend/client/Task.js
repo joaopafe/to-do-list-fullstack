@@ -29,4 +29,14 @@ class Task {
       },
     });
   }
+
+  static async deleteTask(token, taskId) {
+    return fetch(`http://localhost:3000/task/${taskId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+  }
 }
