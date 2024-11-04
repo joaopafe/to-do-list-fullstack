@@ -39,7 +39,7 @@
           <img
             src="../images/add-task.png"
             alt="Cadastrar atividade"
-            onclick="openCreateTaskModal()"
+            onclick="openModal(createTaskModal)"
           />
         </div>
       </div>
@@ -50,13 +50,13 @@
     <dialog id="create-task-modal">
       <div id="modal-title">Cadastrar atividade</div>
 
-      <input id="task-description" type="text" />
+      <input id="task-create-description" type="text" />
 
       <div id="buttons-modal">
         <button id="confirm-task-creation" onclick="createTask()">
           Confirmar
         </button>
-        <button id="cancel-task-creation" onclick="closeCreateTaskModal()">
+        <button id="cancel-task-creation" onclick="closeModal(createTaskModal)">
           Cancelar
         </button>
       </div>
@@ -65,15 +65,19 @@
     <dialog id="edit-task-modal">
       <div id="modal-title">Editar atividade</div>
 
-      <input id="task-description" type="text" />
+      <input id="task-edit-description" type="text" />
 
       <div id="buttons-modal">
-        <button id="confirm-task-creation">Confirmar</button>
-        <button id="cancel-task-creation">Cancelar</button>
+        <button id="confirm-task-edition" onclick="editTask()">
+          Confirmar
+        </button>
+        <button id="cancel-task-edition" onclick="closeModal(editTaskModal)">
+          Cancelar
+        </button>
       </div>
     </dialog>
   </body>
 
   <script src="../client/Task.js"></script>
-  <script src="./main-page.js"></script>
+  <script src="./mainPage.js"></script>
 </html>

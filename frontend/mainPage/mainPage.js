@@ -1,6 +1,8 @@
 const username = localStorage.getItem("username");
 const token = localStorage.getItem("token");
 const createTaskModal = document.getElementById("create-task-modal");
+const editTaskModal = document.getElementById("edit-task-modal");
+const toDoList = document.getElementById("to-do-list");
 let response = {};
 let responseBody = {};
 
@@ -48,7 +50,7 @@ function listTasks(taskList) {
       <div class="edit-and-delete-task">
         <div class="edit-task">
           <div class="edit-text">Editar</div>
-          <div class="edit-icon">
+          <div class="edit-icon" onclick="openModal(editTaskModal, ${task.id})">
             <img src="../images/edit-task.png" alt="Editar atividade" />
           </div>
         </div>
@@ -73,18 +75,20 @@ function logout() {
   window.location.href = "../loginPage/login-page.html";
 }
 
-function openModal() {
-  createTaskModal.style.display = "flex";
-  createTaskModal.showModal();
+function openModal(element, taskId) {
+  if (taskId !== undefined) taskForEdition = taskId;
+
+  element.style.display = "flex";
+  element.showModal();
 }
 
-function closeModal() {
-  createTaskModal.style.display = "none";
-  createTaskModal.close();
+function closeModal(element) {
+  element.style.display = "none";
+  element.close();
 }
 
 async function createTask() {
-  const description = document.getElementById("task-description").value;
+  const description = document.getElementById("task-create-description").value;
 
   response = await Task.postTask(token, description);
   responseBody = await response.json();
@@ -95,7 +99,7 @@ async function createTask() {
 
   if (response.status === 400 || response.status === 404) {
     window.alert(
-      "Não foi possível listar suas atividades. Tente novamente mais tarde"
+      "Não foi possível criar sua atividade. Tente novamente mais tarde"
     );
   }
 
@@ -108,7 +112,39 @@ async function createTask() {
   }
 
   if (response.status === 201) {
-    closeModal();
+    toDoList.innerHTML = "";
+    closeModal(createTaskModal);
+    getTasks(token);
+  }
+}
+
+async function editTask() {
+  const description = document.getElementById("task-edit-description").value;
+
+  response = await Task.putTask(token, taskForEdition, description);
+  responseBody = await response.json();
+
+  if (response.status === 500) {
+    window.alert("Servidor fora de ar. Tente novamente mais tarde");
+  }
+
+  if (response.status === 400 || response.status === 404) {
+    window.alert(
+      "Não foi possível editar sua atividade. Tente novamente mais tarde"
+    );
+  }
+
+  if (response.status === 401) {
+    window.alert(
+      "Sua autenticação foi expirada. Logue novamente para utilizar a plataforma"
+    );
+
+    window.location.href = "../loginPage/login-page.html";
+  }
+
+  if (response.status === 200) {
+    toDoList.innerHTML = "";
+    closeModal(editTaskModal);
     getTasks(token);
   }
 }

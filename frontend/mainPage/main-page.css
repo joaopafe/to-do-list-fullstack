@@ -242,7 +242,7 @@ header {
   margin-bottom: 5%;
 }
 
-#task-description {
+#task-create-description {
   border: none;
   border-radius: 10px;
   background-color: #304173;
@@ -292,7 +292,6 @@ header {
   background-color: #be2525;
 }
 
-/* Começa aqui essa porra: */
 #edit-task-modal {
   border: none;
   border-radius: 20px;
@@ -310,6 +309,18 @@ header {
 #modal-title {
   font-size: 200%;
   margin-bottom: 5%;
+}
+
+#task-edit-description {
+  border: none;
+  border-radius: 10px;
+  background-color: #304173;
+  height: 25%;
+  width: 90%;
+  color: white;
+  font-weight: bold;
+  font-size: 200%;
+  padding-left: 10px;
 }
 
 #buttons-modal {
