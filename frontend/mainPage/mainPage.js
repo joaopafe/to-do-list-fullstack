@@ -3,6 +3,7 @@ const token = localStorage.getItem("token");
 const createTaskModal = document.getElementById("create-task-modal");
 const editTaskModal = document.getElementById("edit-task-modal");
 const toDoList = document.getElementById("to-do-list");
+const searchInput = document.getElementById("search-input");
 let response = {};
 let responseBody = {};
 
@@ -171,6 +172,25 @@ async function deleteTask(taskId) {
     getTasks(token);
   }
 }
+
+function formatString(value) {
+  return value.toLowerCase().trim();
+}
+
+searchInput.addEventListener("input", (event) => {
+  const value = formatString(event.target.value);
+  const tasks = document.querySelectorAll(".task");
+
+  tasks.forEach((task) => {
+    if (formatString(task.innerText).indexOf(value) !== -1) {
+      task.style.display = "flex";
+    }
+
+    if (formatString(task.innerText).indexOf(value) === -1) {
+      task.style.display = "none";
+    }
+  });
+});
 
 document.getElementById("welcome-section").innerHTML = `
 Olá ${username}! <br />
