@@ -291,3 +291,61 @@ header {
   cursor: pointer;
   background-color: #be2525;
 }
+
+/* Começa aqui essa porra: */
+#edit-task-modal {
+  border: none;
+  border-radius: 20px;
+  height: 30%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #4e68b3;
+  color: white;
+  display: none;
+}
+
+#modal-title {
+  font-size: 200%;
+  margin-bottom: 5%;
+}
+
+#buttons-modal {
+  height: 40px;
+  width: 400px;
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#confirm-task-edition {
+  border: none;
+  border-radius: 5px;
+  background-color: #2056c1;
+  color: white;
+  width: 40%;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+#cancel-task-edition {
+  border: none;
+  border-radius: 5px;
+  background-color: #d02828;
+  color: white;
+  width: 40%;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+#confirm-task-edition:hover {
+  cursor: pointer;
+  background-color: #1d4ca9;
+}
+
+#cancel-task-edition:hover {
+  cursor: pointer;
+  background-color: #be2525;
+}

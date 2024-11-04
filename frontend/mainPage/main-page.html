@@ -39,7 +39,7 @@
           <img
             src="../images/add-task.png"
             alt="Cadastrar atividade"
-            onclick="openModal()"
+            onclick="openCreateTaskModal()"
           />
         </div>
       </div>
@@ -56,9 +56,20 @@
         <button id="confirm-task-creation" onclick="createTask()">
           Confirmar
         </button>
-        <button id="cancel-task-creation" onclick="closeModal()">
+        <button id="cancel-task-creation" onclick="closeCreateTaskModal()">
           Cancelar
         </button>
+      </div>
+    </dialog>
+
+    <dialog id="edit-task-modal">
+      <div id="modal-title">Editar atividade</div>
+
+      <input id="task-description" type="text" />
+
+      <div id="buttons-modal">
+        <button id="confirm-task-creation">Confirmar</button>
+        <button id="cancel-task-creation">Cancelar</button>
       </div>
     </dialog>
   </body>
