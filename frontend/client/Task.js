@@ -18,4 +18,15 @@ class Task {
       },
     });
   }
+
+  static async putTask(token, taskId, description) {
+    return fetch(`http://localhost:3000/task/${taskId}`, {
+      method: "PUT",
+      body: JSON.stringify({ description }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+  }
 }
