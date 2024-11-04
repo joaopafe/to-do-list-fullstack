@@ -57,7 +57,7 @@ function listTasks(taskList) {
 
         <div class="delete-task">
           <div class="delete-text">Excluir</div>
-          <div class="delete-icon">
+          <div class="delete-icon" onclick="deleteTask(${task.id})">
             <img src="../images/delete-task.png" alt="Excluir atividade" />
           </div>
         </div>
@@ -89,9 +89,7 @@ function closeModal(element) {
 
 async function createTask() {
   const description = document.getElementById("task-create-description").value;
-
   response = await Task.postTask(token, description);
-  responseBody = await response.json();
 
   if (response.status === 500) {
     window.alert("Servidor fora de ar. Tente novamente mais tarde");
@@ -120,9 +118,7 @@ async function createTask() {
 
 async function editTask() {
   const description = document.getElementById("task-edit-description").value;
-
   response = await Task.putTask(token, taskForEdition, description);
-  responseBody = await response.json();
 
   if (response.status === 500) {
     window.alert("Servidor fora de ar. Tente novamente mais tarde");
@@ -145,6 +141,33 @@ async function editTask() {
   if (response.status === 200) {
     toDoList.innerHTML = "";
     closeModal(editTaskModal);
+    getTasks(token);
+  }
+}
+
+async function deleteTask(taskId) {
+  response = await Task.deleteTask(token, taskId);
+
+  if (response.status === 500) {
+    window.alert("Servidor fora de ar. Tente novamente mais tarde");
+  }
+
+  if (response.status === 400 || response.status === 404) {
+    window.alert(
+      "Não foi possível remover sua atividade. Tente novamente mais tarde"
+    );
+  }
+
+  if (response.status === 401) {
+    window.alert(
+      "Sua autenticação foi expirada. Logue novamente para utilizar a plataforma"
+    );
+
+    window.location.href = "../loginPage/login-page.html";
+  }
+
+  if (response.status === 200) {
+    toDoList.innerHTML = "";
     getTasks(token);
   }
 }
