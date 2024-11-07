@@ -134,18 +134,40 @@ header {
 }
 
 .check-icon {
+  height: 80px;
   width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.check-icon img {
-  max-height: 60%;
-  max-width: 60%;
-  height: auto;
-  width: auto;
-}
-
-.check-icon:hover {
+input[type="checkbox"] {
+  appearance: none;
+  border-radius: 20px;
+  height: 75px;
+  width: 75px;
+  background-color: #a6a8a6;
+  color: white;
   cursor: pointer;
+}
+
+input[type="checkbox"]::after {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+  content: "\2714";
+  display: none;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #32a528;
+}
+
+input[type="checkbox"]:checked:after {
+  display: flex;
 }
 
 .task-name {

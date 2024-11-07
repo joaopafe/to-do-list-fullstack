@@ -43,7 +43,7 @@ function listTasks(taskList) {
 
     taskDiv.innerHTML = `
       <div class="check-icon">
-        <img src="../images/check-task.png" alt="Status de checagem" />
+        <input id="check-icon" type="checkbox" />
       </div>
 
       <div class="task-name">${task.description}</div>
