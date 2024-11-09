@@ -28,4 +28,20 @@ class Login {
       },
     });
   }
+
+  static async updatePassword(username, password, newPassword) {
+    const body = JSON.stringify({
+      username,
+      password,
+      newPassword,
+    });
+
+    return fetch("http://localhost:3000", {
+      method: "PUT",
+      body,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 }
