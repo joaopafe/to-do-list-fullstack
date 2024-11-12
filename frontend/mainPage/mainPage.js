@@ -76,6 +76,10 @@ function logout() {
   window.location.href = "../loginPage/login-page.html";
 }
 
+function updatePassword() {
+  window.location.href = "../updatePasswordPage/update-password-page.html";
+}
+
 function openModal(element, taskId) {
   if (taskId !== undefined) taskForEdition = taskId;
 
