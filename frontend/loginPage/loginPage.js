@@ -8,7 +8,7 @@ async function executeSign() {
 
   await executeLoading();
 
-  const response = await Login.signIn(username, password);
+  const response = await User.signIn(username, password);
   const responseBody = await response.json();
 
   if (response.status === 500) {

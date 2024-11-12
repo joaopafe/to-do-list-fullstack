@@ -1,4 +1,4 @@
-class Login {
+class User {
   static async signIn(username, password) {
     const body = JSON.stringify({
       username,
@@ -36,7 +36,7 @@ class Login {
       newPassword,
     });
 
-    return fetch("http://localhost:3000", {
+    return fetch("http://localhost:3000/user", {
       method: "PUT",
       body,
       headers: {

@@ -23,7 +23,7 @@ async function executeSignUp() {
   if (passwordsAreEquals === true) {
     await executeLoading();
 
-    const response = await Login.signUp(username, password);
+    const response = await User.signUp(username, password);
     const responseBody = await response.json();
 
     if (response.status === 500) {
