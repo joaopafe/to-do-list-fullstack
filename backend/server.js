@@ -1,9 +1,11 @@
 const express = require("express");
 const cors = require("cors");
-const taskRouter = require("./task/taskRoutes");
 const { errors } = require("celebrate");
+const taskRouter = require("./task/taskRoutes");
 const userRouter = require("./user/userRoutes");
 const errorMiddleware = require("./error/errorMiddleware");
+const swaggerUI = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
 const PORT = process.env.PORT || 3000;
 
@@ -20,3 +22,5 @@ app.use("/user", userRouter);
 
 app.use(errors());
 app.use(errorMiddleware);
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
