@@ -30,3 +30,7 @@ function validate(response, responseBody) {
     );
   }
 }
+
+function backPage() {
+  window.location.href = "../mainPage/main-page.html";
+}
